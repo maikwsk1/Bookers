@@ -1,0 +1,29 @@
+ 
+<h2>Books</h2>
+<p>タイトル</p>
+
+<div class="container">
+  <% @books.each do |book| %>
+    <div class="section">
+      <span class="book-title"><%= book.title %></span>
+      <span class="book-body"><%= book.body %></span>
+      <span class="show-link"><%= link_to "Show", book_path(book.id) %></span>
+     <%= link_to "削除", destroy_book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+    </div>
+<% end %>
+
+
+
+<h2>New book</h2>
+<%= form_tag("/books", method: "post", class: "new_book", id: "new_book", accept_charset: "UTF-8") do %>
+ 
+
+  <h5>Title</h5>
+  <%= text_field_tag("book[title]") %>
+
+  <h5>Body</h5>
+  <%= text_area_tag("book[body]") %>
+
+  <%= submit_tag("Create Book") %>
+<% end %>
