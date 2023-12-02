@@ -8,6 +8,7 @@
       <span class="book-title"><%= book.title %></span>
       <span class="book-body"><%= book.body %></span>
       <span class="show-link"><%= link_to "Show", book_path(book.id) %></span>
+     <%= link_to "編集", edit_book_path(book.id) %>
      <%= link_to "削除", destroy_book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
     </div>
