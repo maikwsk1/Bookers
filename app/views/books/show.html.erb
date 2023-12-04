@@ -1,9 +1,8 @@
-<h2>タイトル</h2>
-<p><%= @book.title %></p>
-
-<h2>本文</h2>
-<p><%= @book.body %></p>
-
+<div class="main2"><div>
+  <%= flash[:notice] %>
+</div>
+<p><b>Title:</b><%= @book.title %></p>
+<p><b>Body:</b><%= @book.body %></p>
+<a>
 <%= link_to "Edit", edit_book_path(@book.id) %>
-
-<%= link_to "Back", books_path %>
+|<%= link_to "Back", books_path %></a></main>

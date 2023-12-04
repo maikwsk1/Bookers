@@ -11,10 +11,14 @@ class BooksController < ApplicationController
   def create
     book = Book.new(book_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    book.save
+    if book.save
+    flash[:notice] = "投稿が成功しました"
     redirect_to book_path(book.id)
+    else
+     render :new
+    end
   end
-
+  
   def index
     @books = Book.all  
   end
@@ -30,6 +34,7 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update(book_params)
+    flash[:notice] = "投稿が成功しました"
     redirect_to book_path(book.id)  
   end
   
