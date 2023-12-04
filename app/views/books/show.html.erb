@@ -1,8 +1,9 @@
 <div class="main">
   <%= flash[:notice] %>
-<p><b>Title:</b><%= @book.title %></p>
-<p><b>Body:</b><%= @book.body %></p>
-<a>
-<%= link_to "Edit", edit_book_path(@book.id) %>
-|<%= link_to "Back", books_path %></a>
-<div>
+  <p><b>Title:</b><%= @book.title %></p>
+  <p><b>Body:</b><%= @book.body %></p>
+  <div>
+    <%= link_to "Edit", edit_book_path(@book.id) %> |
+    <%= link_to "Back", books_path %>
+  </div>
+</div>
