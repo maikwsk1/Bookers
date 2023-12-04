@@ -1,13 +1,15 @@
-<div class="header">
   <h2>Books</h2>
-</div>
-<div class="main2">
+  <div class="main">
+ <body>
+
 <table>
   <thead>
     <tr>
       <td class="book-table"><b>Title</b></td>
-      <td class="book-table"><b>Body</b></td>
-      <td></td>
+      <td class="book-body"><b>Body</b></td>
+      <td class="show-link"></td>
+      <td class="edit-link"></td>
+      <td class="destroy-link"></td>
     </tr>
   </thead>
 
@@ -16,25 +18,27 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.body %></td>
-        <td><a><%= link_to "Show", book_path(book.id) %></a></td>
-        <td><a><%= link_to "Edit", edit_book_path(book.id) %></a></td>
-        <td><a><%= link_to "Destroy", destroy_book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></a></td>
+        <td><a class="show-link"><%= link_to "Show", book_path(book.id) %></a></td>
+        <td><a class="edit-link"><%= link_to "Edit", edit_book_path(book.id) %></a></td>
+        <td><a class="destroy-link">
+              <%= link_to "Destroy", destroy_book_path(book.id), method: :delete, data: { confirm: "Are you sure ?" } %>
+            </a></td>
       </tr>
     <% end %>
   </tbody>
-</table></div>
+</table>
+</body>
 
-
-
+<body><div class="newbook-body">
 <h2>New book</h2>
 <%= form_tag("/books", method: "post", class: "new_book", id: "new_book", accept_charset: "UTF-8") do %>
  
+  <h4>Title</h4>
+  <%= text_field_tag("book[title]") %> 
 
-  Title
-  <%= text_field_tag("book[title]") %>
-
-  <h5>Body</h5>
-  <%= text_area_tag("book[body]") %>
-
-  <%= submit_tag("Create Book") %>
-<% end %>
+ <h4>Body</h4>
+ <%= text_area_tag("book[body]") %> 
+<div> <%= submit_tag("Create Book") %></div>
+<% end %></div>
+</div>
+</body>
